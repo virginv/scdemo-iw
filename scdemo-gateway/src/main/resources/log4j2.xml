@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Properties/>
+  <Appenders>
+    <Console name="stdout" target="SYSTEM_OUT">
+      <PatternLayout pattern=":scdemo %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5p}{FATAL=magenta, ERROR=red, WARN=yellow, INFO=green, DEBUG=cyan, TRACE=blue} [%t] %c{3} - %m%n"/>
+    </Console>
+    <RollingFile name="rolling-file" fileName="./logs/scdemo-api.log" filePattern="./logs/scdemo-api-%d{yyyy-MM-dd}_%i.log.gz">
+      <PatternLayout pattern=":scdemo %d{yyyy-MM-dd'T'HH:mm:ss.SSS} %-5p [${hostName}] [%t] %c{3} - %m%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="5GB"/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="./logs/" maxDepth="1">
+          <IfLastModified age="4d"/>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="DEBUG">
+      <AppenderRef ref="stdout"/>
+      <AppenderRef ref="rolling-file"/>
+    </Root>
+  </Loggers>
+</Configuration>

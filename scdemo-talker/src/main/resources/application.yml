@@ -1,0 +1,25 @@
+spring:
+  application.name: scdemo-talker
+
+server.port: 8082
+#server.port: 0
+
+eureka:
+  client:
+    register-with-eureka: true
+    #service-url.default-zone: http://eureka:eureka@localhost:8762/eureka/
+    service-url.default-zone: http://eureka:eureka@localhost:8761/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    leaseRenewalIntervalInSeconds: 5
+
+scdemo-greeter:
+  ribbon:
+    eureka:
+      enabled: true
+      #enabled: false
+    #listOfServers: localhost:8081
+    #listOfServers: localhost:8081,localhost:9081
+    ServerListRefreshInterval: 15000
+    
+    

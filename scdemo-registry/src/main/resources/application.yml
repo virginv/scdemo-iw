@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: scdemo-registry
+        
+security:
+  user:
+    name: eureka
+    password: eureka
+
+eureka:
+  server:
+    enableSelfPreservation: true
+    eviction-interval-timer-in-ms: 30000
+#   client:
+#      registerWithEureka: false
+#      fetchRegistry: false
+#     serviceUrl: 
+#        defaultZone: http://localhost:8762/eureka/
+
+#enableSelfPreservation cuando mas del 15% de los ms dejan de conectrse con eureka entra en este modo
+#registerWithEureka: Eureka client is instructed register itself upon start up 
+#eviction-interval-timer-in-ms tiempo en el que verifica si los ms estan vivos
+#zonadefault: todos los servidores que estan en la zona donde esta eureka corriendo
+#fetchRegistry: Told search for other registry nodes to connect to

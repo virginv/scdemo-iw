@@ -1,0 +1,35 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: scdemo-config
+  cloud:
+    config:
+      # Tells the Spring Cloud configuration server to use a non-filesystem-based backend repository
+      server:
+        git:
+          uri: https://github.com/virginv/spring-cloud.git
+          skip-ssl-validation: true
+          username: sndjnvsjv
+          password: nsljdnkjszdn
+          #clone-on-start: true
+  security:
+    user:
+      name: root
+      password: s3cr3t
+
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      default-zone: http://eureka:eureka@localhost:8761/eureka/
+    instance:
+      instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+      leaseRenewalIntervalInSeconds: 5 
+
+logging.level:
+  org.springframework.retry: trace
+  com.netflix.discovery: trace
+  
+#encrypt.key: v3n3zu3l4

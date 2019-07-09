@@ -10,8 +10,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class Application {
-	private static final Logger log = LogManager.getLogger(Application.class);
+public class RegistryApplication {
+	private static final Logger log = LogManager.getLogger(RegistryApplication.class);
 
 	private static String buildSignature() {
 		String signature = "SCDEMO-REGISTRY\n";
@@ -29,7 +29,7 @@ public class Application {
 
 		log.info("################ Starting service : " + serviceName + " v" + serviceVersion);
 		log.info(buildSignature());
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(RegistryApplication.class, args);
 	}
 
 }

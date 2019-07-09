@@ -4,6 +4,9 @@ server:
 minimum: 1
 maximum: 2
 
+# configurar el paquete actuator de tal modo que se pueda acceder a la URL http://localhost:PORT/actuator/refreshque será la que obligara a refrescar las diferentes propiedades.
+management.endpoints.web.exposure.include: refresh
+
 spring:
   application:
     name: scdemo-greeter

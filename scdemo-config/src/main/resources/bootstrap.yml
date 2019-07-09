@@ -11,9 +11,17 @@ spring:
         git:
           uri: https://github.com/virginv/spring-cloud.git
           skip-ssl-validation: true
-          username: sndjnvsjv
-          password: nsljdnkjszdn
+          username: sdfsdfsdf
+          password: sdsdfsdsd
+          # refreshRate how often the config server will fetch updated configuration data from your Git backend
+          refreshRate: 15
           #clone-on-start: true
+#         encrypt:
+#           key-store:
+#             location: classpath:/config-server.jks
+#             password: s70r3-s3cr3t
+#             alias: scdemo-config-key
+#             secret: k34-s3cr3t
   security:
     user:
       name: root

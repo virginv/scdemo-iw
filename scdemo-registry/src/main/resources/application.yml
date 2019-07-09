@@ -14,14 +14,14 @@ eureka:
   server:
     enableSelfPreservation: true
     eviction-interval-timer-in-ms: 30000
-#   client:
-#      registerWithEureka: false
-#      fetchRegistry: false
-#     serviceUrl: 
-#        defaultZone: http://localhost:8762/eureka/
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+#   serviceUrl: 
+#     defaultZone: http://localhost:8762/eureka/
 
-#enableSelfPreservation cuando mas del 15% de los ms dejan de conectrse con eureka entra en este modo
-#registerWithEureka: Eureka client is instructed register itself upon start up 
+#enableSelfPreservation cuando mas del 15% de los ms dejan de conectrse con eureka entra y este modo esta activo: any clients that fails 3 consecutive heartbeat renewals is considered to have an unclean termination
+#registerWithEureka: para que el servidor no se intente registrar a si mismo 
 #eviction-interval-timer-in-ms tiempo en el que verifica si los ms estan vivos
-#zonadefault: todos los servidores que estan en la zona donde esta eureka corriendo
-#fetchRegistry: Told search for other registry nodes to connect to
+#zonadefault: todos los servidores eureka que estan en la zona donde esta eureka corriendo
+#fetchRegistry: con este parámetro especificamos a los clientes que no se guarden en su cache local las direcciones de los diferentes instancias. Esto es para que consulte al servidor Eureka cada vez que necesite acceder a un servicio. En producción a menudo se pone a true para agilizar las peticiones. Esa cache se actualiza cada 30 segundos por defecto

@@ -1,37 +1,39 @@
 server:
   port: 8765
 
+security:
+  user:
+    name: root
+    password: '{cipher}a28c4446bd45ab63fddc4629b9e0ec778d48ca8fff24fcf745c324c75b5a29a0'
+
+# esto deberia estar seteado como variable de entorno (ENCRYPT_KEY)
+encrypt:
+  key: 123456
+
 spring:
   application:
     name: scdemo-config
+  profile:
+    active: default
   cloud:
-    config:
+    config: 
       # Tells the Spring Cloud configuration server to use a non-filesystem-based backend repository
       server:
+        encrypt:
+          enabled: false
         git:
           uri: https://github.com/virginv/spring-cloud.git
           skip-ssl-validation: true
-          username: sdfsdfsdf
-          password: sdsdfsdsd
-          # refreshRate how often the config server will fetch updated configuration data from your Git backend
-          refreshRate: 15
-          #clone-on-start: true
-#         encrypt:
-#           key-store:
-#             location: classpath:/config-server.jks
-#             password: s70r3-s3cr3t
-#             alias: scdemo-config-key
-#             secret: k34-s3cr3t
-  security:
-    user:
-      name: root
-      password: s3cr3t
-
+          username: virginv
+          password: '{cipher}cb1004de94983649324a3938ad23c2b0903f840bee2af01669567fb58742d992'
+          
 eureka:
   client:
     register-with-eureka: true
     service-url:
-      default-zone: http://eureka:eureka@localhost:8761/eureka/
+      default-zone: http://localhost:8761/eureka/
+      username: eureka
+      password: '{cipher}6a362c49574e68dc0b8dfd323c4d225733321610e4d2cc8a9d535e718824b443'
     instance:
       instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
       leaseRenewalIntervalInSeconds: 5 
@@ -39,5 +41,5 @@ eureka:
 logging.level:
   org.springframework.retry: trace
   com.netflix.discovery: trace
-  
-#encrypt.key: v3n3zu3l4
+
+

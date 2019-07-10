@@ -3,10 +3,14 @@ server:
   
 minimum: 1
 maximum: 2
+pass: '{cipher}9c0aa5ec0f9480181bf6028e464b24d75a53c6021e40e32aa3d4a0c1b018004f'
 
-# configurar el paquete actuator de tal modo que se pueda acceder a la URL http://localhost:PORT/actuator/refreshque será la que obligara a refrescar las diferentes propiedades.
-management.endpoints.web.exposure.include: refresh
-
+security:
+  basic:
+    enabled: false
+encrypt:
+  key: 123456
+  
 spring:
   application:
     name: scdemo-greeter
@@ -15,25 +19,18 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://root:s3cr3t@localhost:8765
+      uri: http://localhost:8765
+      username: root
+      password: '{cipher}9967c961f3d6e55418cc27f03ede1df92e79ef8a72facffb0bb07916b7283b08'
+      # fail-fast en true detiene el inicio si no esta disponible el Config Server y se configuran reintentos
       fail-fast: true
       retry:
         max-attempts: 10
         max-interval: 2000
         initial-interval: 1500
         multiplier: 1.5
-      
-eureka:
-  client:
-    register-with-eureka: true
-    service-url:
-      default-zone: http://eureka:eureka@localhost:8761/eureka/
-    instance:
-      instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-      leaseRenewalIntervalInSeconds: 5
 
-logging.level:
-  org.springframework.retry: trace
-  com.netflix.discovery: trace
+ 
 
+  
   

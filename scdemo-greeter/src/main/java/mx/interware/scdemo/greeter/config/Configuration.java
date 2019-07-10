@@ -9,6 +9,7 @@ public class Configuration {
 	
 	private int minimum;
 	private int maximum;
+	private String pass;
 	
 	public int getMinimum() {
 		return minimum;
@@ -22,7 +23,12 @@ public class Configuration {
 	public void setMaximum(int maximum) {
 		this.maximum = maximum;
 	}
-	
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 
 }
 

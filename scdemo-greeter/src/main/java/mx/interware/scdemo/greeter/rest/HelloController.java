@@ -24,6 +24,9 @@ public class HelloController {
 	@Value("${maximum}")
     private String maximum;
 	
+	@Value("${pass}")
+    private String pass;
+	
 	@Autowired
 	private Configuration configuration;
 	
@@ -34,6 +37,7 @@ public class HelloController {
 	public ResponseEntity<?> greetings(@PathVariable(value = "name") String name) throws InterruptedException {
 		String message = "Greetings from Spring Cloud " + env.getProperty("local.server.port") + ": " + name + "!";
 		log.info("minimun: " + minimun + " maximum: " + maximum);
+		log.info("pass: " + pass + " configuration.getPass: " + configuration.getPass());
 		log.info("Configuration.getMinimum: " + configuration.getMinimum() + " Configuration.getMaximum: " + configuration.getMaximum());
 		log.info("Port: " + env.getProperty("local.server.port"));
 		log.info("Saying hello: " + message + " ...");
